@@ -3,7 +3,7 @@ import * as teamsCtrl from '../controllers/teams.js'
 
 const router = Router()
 
-// GET localhost:3000/users
+// GET localhost:3000/teams
 router.get('/', teamsCtrl.index)
 
 export { router }

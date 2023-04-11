@@ -8,6 +8,7 @@ import logger from 'morgan'
 // import routers
 import { router as indexRouter } from './routes/index.js'
 import { router as teamsRouter } from './routes/teams.js'
+import { router as playersRouter } from './routes/players.js'
 
 // create the express app
 const app = express()
@@ -28,6 +29,7 @@ app.use(
 // mount imported routes
 app.use('/', indexRouter)
 app.use('/teams', teamsRouter)
+app.use('/players', playersRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

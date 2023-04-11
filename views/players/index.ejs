@@ -9,7 +9,12 @@
 </head>
 <body>
   <h1><%= title %></h1>
-  <a href="/teams"><p>See all the teams in the NBA</p></a>
-  <a href="/players"><p>See all the players in the NBA</p></a>
+  <% players.forEach( player => { %>
+    <li>
+      <%= player.lastName %>, <%= player.firstName%>
+    </li>
+  <% }) %>
+  <br>
+  <a href="/">Home page</a>
 </body>
 </html>
