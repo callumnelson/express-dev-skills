@@ -1,4 +1,5 @@
 import { teams } from '../data/teams-data.js'
+import { players } from '../data/players-data.js'
 
 function index(req, res) {
   res.render('teams/index', {
@@ -9,11 +10,13 @@ function index(req, res) {
 
 function oneTeam(req, res) {
   let teamId = +req.params.teamId
-  const team = teams.filter(team => team.teamId === teamId)[0]
+  let team = teams.filter(team => team.teamId === teamId)[0]
+  let teamPlayers = players.filter(player => player.teamId === teamId)
 
   res.render('teams/oneTeam', {
     team : team,
-    title : team.teamName
+    title : team.teamName,
+    players : teamPlayers,
   })
 }
 
