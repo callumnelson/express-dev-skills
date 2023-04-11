@@ -6,4 +6,6 @@ const router = Router()
 // GET localhost:3000/teams
 router.get('/', teamsCtrl.index)
 
+router.get('/:teamId', teamsCtrl.oneTeam)
+
 export { router }

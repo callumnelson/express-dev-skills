@@ -7,6 +7,17 @@ function index(req, res) {
   })
 }
 
+function oneTeam(req, res) {
+  let teamId = +req.params.teamId
+  const team = teams.filter(team => team.teamId === teamId)[0]
+
+  res.render('teams/oneTeam', {
+    team : team,
+    title : team.teamName
+  })
+}
+
 export { 
   index, 
+  oneTeam
 }
