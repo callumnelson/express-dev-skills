@@ -11,12 +11,12 @@ function index(req, res) {
   })
 }
 
-function oneTeam(req, res) {
+function show(req, res) {
   let teamId = +req.params.teamId
   let team = teams.filter(team => team.teamId === teamId)[0]
   let teamPlayers = players.filter(player => player.teamId === teamId)
 
-  res.render('teams/oneTeam', {
+  res.render('teams/show', {
     team : team,
     title : team.teamName,
     players : teamPlayers,
@@ -25,5 +25,5 @@ function oneTeam(req, res) {
 
 export { 
   index, 
-  oneTeam
+  show
 }
