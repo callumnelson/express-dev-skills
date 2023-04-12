@@ -1,6 +1,9 @@
 import { teams } from '../data/teams-data.js'
 import { players } from '../data/players-data.js'
 
+import { Team } from '../models/team.js'
+import { Player } from '../models/player.js'
+
 function index(req, res) {
   res.render('teams/index', {
     teams : teams,
