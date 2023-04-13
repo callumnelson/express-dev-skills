@@ -69,9 +69,21 @@ function create(req, res) {
   })
 }
 
+const deleteTeam = async (req, res) => {
+  try {
+    const deleted = await Team.findByIdAndDelete(req.params.teamId)
+    console.log("You deleted", deleted)
+  } catch(err) {
+    console.log(err)
+  } finally {
+    res.redirect('/teams')
+  }
+}
+
 export { 
   index, 
   show,
   newTeam as new,
-  create
+  create,
+  deleteTeam as delete
 }

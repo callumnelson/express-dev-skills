@@ -12,7 +12,7 @@
   <% players.forEach( player => { %>
     <li>
       <form
-        action="/todos/<%= player._id %>?_method=DELETE"
+        action="/players/<%= player._id %>?_method=DELETE"
         class="delete-form"
         method="POST"
       >

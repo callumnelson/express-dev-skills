@@ -12,7 +12,7 @@
   <% teams.forEach( team => { %>
     <li>
       <form
-        action="/todos/<%= team._id %>?_method=DELETE"
+        action="/teams/<%= team._id %>?_method=DELETE"
         class="delete-form"
         method="POST"
       >

@@ -12,4 +12,6 @@ router.get('/:teamId', teamsCtrl.show)
 
 router.post('/', teamsCtrl.create)
 
+router.delete('/:teamId', teamsCtrl.delete)
+
 export { router }
