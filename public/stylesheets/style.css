@@ -4,7 +4,13 @@ body {
 }
 
 form > input, form > label, form > button {
-  margin: 10px 0;
+  margin: 5px 0;
+}
+
+li {
+  display:flex;
+  align-items: center;
+  gap: 10px;
 }
 
 a {

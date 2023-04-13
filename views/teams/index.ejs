@@ -11,6 +11,13 @@
   <h1><%= title %></h1>
   <% teams.forEach( team => { %>
     <li>
+      <form
+        action="/todos/<%= team._id %>?_method=DELETE"
+        class="delete-form"
+        method="POST"
+      >
+        <button type="submit">X</button>
+      </form>
       <a href="/teams/<%= team._id %>"><%= team.teamName %> (<%= team.abbreviation%>)</a>
     </li>
   <% }) %>
