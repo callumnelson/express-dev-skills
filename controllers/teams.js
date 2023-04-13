@@ -5,25 +5,53 @@ import { Team } from '../models/team.js'
 import { Player } from '../models/player.js'
 
 function index(req, res) {
-  res.render('teams/index', {
-    teams : teams,
-    title : `NBA Teams (${teams.length})`
+  Team.find({})
+  .then(teams => {
+    res.render('teams/index', {
+      teams : teams,
+      title : `NBA Teams (${teams.length})`
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/')
   })
 }
 
 function show(req, res) {
-  let teamId = +req.params.teamId
-  let team = teams.filter(team => team.teamId === teamId)[0]
-  let teamPlayers = players.filter(player => player.teamId === teamId)
+  Team.findById(req.params.teamId)
+  .then(team => {
+    res.render('teams/show', {
+      team : team,
+      players : [],
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/teams')
+  })
+}
 
-  res.render('teams/show', {
-    team : team,
-    title : team.teamName,
-    players : teamPlayers,
+function newTeam(req, res) {
+  res.render('teams/new')
+}
+
+function create(req, res) {
+  console.log("New team:", req.body)
+  Team.create(req.body)
+  .then(team => {
+    console.log(team)
+    res.redirect('/teams')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/teams')
   })
 }
 
 export { 
   index, 
-  show
+  show,
+  newTeam as new,
+  create
 }

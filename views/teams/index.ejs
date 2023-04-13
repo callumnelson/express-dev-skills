@@ -11,9 +11,11 @@
   <h1><%= title %></h1>
   <% teams.forEach( team => { %>
     <li>
-      <a href="/teams/<%= team.teamId %>"><%= team.teamName %> (<%= team.abbreviation%>)</a>
+      <a href="/teams/<%= team._id %>"><%= team.teamName %> (<%= team.abbreviation%>)</a>
     </li>
   <% }) %>
+  <br>
+  <a href="/teams/new">Add a team</a>
   <br>
   <a href="/">Home page</a>
 </body>

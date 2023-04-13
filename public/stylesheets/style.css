@@ -3,6 +3,10 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+form > input, form > label, form > button {
+  margin: 10px 0;
+}
+
 a {
   color: #00B7FF;
 }
