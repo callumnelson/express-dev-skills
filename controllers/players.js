@@ -16,6 +16,25 @@ function index(req, res) {
   })
 }
 
+function newPlayer(req, res) {
+  res.render('players/new')
+}
+
+function create(req, res) {
+  console.log("New player:", req.body)
+  Player.create(req.body)
+  .then(player => {
+    console.log(player)
+    res.redirect('/players')
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/players')
+  })
+}
+
 export { 
   index, 
+  newPlayer as new,
+  create,
 }
