@@ -10,4 +10,6 @@ router.get('/new', playersCtrl.new)
 
 router.post('/', playersCtrl.create)
 
+router.get('/:playerId', playersCtrl.show)
+
 export { router }

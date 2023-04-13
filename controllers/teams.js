@@ -19,17 +19,28 @@ function index(req, res) {
 }
 
 function show(req, res) {
+
   Team.findById(req.params.teamId)
   .then(team => {
-    res.render('teams/show', {
-      team : team,
-      players : [],
+    Player.find({ teamId : team.teamId})
+    .then(players => {
+      console.log(players)
+      res.render('teams/show', {
+        team : team,
+        players : players,
+      })
     })
+    .catch(error => {
+      console.log(error)
+      res.redirect('/teams')
+    })
+    
   })
   .catch(error => {
     console.log(error)
     res.redirect('/teams')
   })
+
 }
 
 function newTeam(req, res) {

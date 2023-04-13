@@ -33,8 +33,24 @@ function create(req, res) {
   })
 }
 
+function show(req, res) {
+  console.log(req.params)
+  Player.findById(req.params.playerId)
+  .then(player => {
+    console.log(player)
+    res.render('players/show', {
+      player : player
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/players')
+  })
+}
+
 export { 
   index, 
   newPlayer as new,
   create,
+  show
 }

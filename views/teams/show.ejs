@@ -12,6 +12,16 @@
   <h2>Location: <%= team.location %></h2>
   <h3>Abbreviation: <%= team.abbreviation %></h3>
   <br>
+  <h3>Players list:</h3>
+  <ul>
+    <% players.forEach(player => { %>
+      <li>
+        <a href="/players/<%= player._id %>">
+          <%= player.firstName + ' ' + player.lastName%>
+        </a>
+			</li>
+    <% }) %>
+  </ul>
   <a href="/teams">Teams list</a>
 </body>
 </html>
