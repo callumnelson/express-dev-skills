@@ -9,11 +9,8 @@
 </head>
 <body>
   <h1><%= team.teamName %></h1>
-  <% players.forEach( player => { %>
-    <li>
-      <%= player.lastName %>, <%= player.firstName%>
-    </li>
-  <% }) %>
+  <h2>Location: <%= team.location %></h2>
+  <h3>Abbreviation: <%= team.abbreviation %></h3>
   <br>
   <a href="/teams">Teams list</a>
 </body>
