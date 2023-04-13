@@ -17,30 +17,39 @@ function index(req, res) {
     res.redirect('/')
   })
 }
+// More complex version with nested .then
+// function show(req, res) {
 
-function show(req, res) {
+//   Team.findById(req.params.teamId)
+//   .then(team => {
+//     Player.find({ teamId : team.teamId})
+//     .then(players => {
+//       console.log(players)
+//       res.render('teams/show', {
+//         team : team,
+//         players : players,
+//       })
+//     })
+//     .catch(error => {
+//       console.log(error)
+//       res.redirect('/teams')
+//     })
+//   })
+//   .catch(error => {
+//     console.log(error)
+//     res.redirect('/teams')
+//   })
+// }
 
-  Team.findById(req.params.teamId)
-  .then(team => {
-    Player.find({ teamId : team.teamId})
-    .then(players => {
-      console.log(players)
-      res.render('teams/show', {
-        team : team,
-        players : players,
-      })
-    })
-    .catch(error => {
-      console.log(error)
-      res.redirect('/teams')
-    })
-    
-  })
-  .catch(error => {
-    console.log(error)
+const show = async (req,res) => {
+  try{
+    const team = await Team.findById(req.params.teamId)
+    const players = await Player.find({ teamId: team.teamId })
+    res.render('teams/show', { team, players })
+  } catch(err) {
+    console.log(err)
     res.redirect('/teams')
-  })
-
+  }
 }
 
 function newTeam(req, res) {
