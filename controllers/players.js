@@ -48,9 +48,21 @@ function show(req, res) {
   })
 }
 
+const deletePlayer = async (req, res) => {
+  try {
+    const deleted = await Player.findByIdAndDelete(req.params.playerId)
+    console.log("You deleted", deleted)
+  } catch(err) {
+    console.log(err)
+  } finally {
+    res.redirect('/players')
+  }
+}
+
 export { 
   index, 
   newPlayer as new,
   create,
-  show
+  show,
+  deletePlayer as delete
 }

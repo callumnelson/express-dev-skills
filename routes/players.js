@@ -12,4 +12,6 @@ router.post('/', playersCtrl.create)
 
 router.get('/:playerId', playersCtrl.show)
 
+router.delete('/:playerId', playersCtrl.delete)
+
 export { router }

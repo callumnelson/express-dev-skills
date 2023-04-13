@@ -16,10 +16,17 @@
   <ul>
     <% players.forEach(player => { %>
       <li>
+        <form
+          action="/players/<%= player._id %>?_method=DELETE"
+          class="delete-form"
+          method="POST"
+        >
+          <button type="submit">X</button>
+        </form>
         <a href="/players/<%= player._id %>">
-          <%= player.firstName + ' ' + player.lastName%>
+          <%= player.lastName %>, <%= player.firstName%>
         </a>
-			</li>
+      </li>
     <% }) %>
   </ul>
   <a href="/teams">Teams list</a>
