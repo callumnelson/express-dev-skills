@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
+import methodOverride from 'method-override'
 // connect to the database with Mongoose
 import './config/database.js'
 
@@ -19,15 +20,28 @@ const app = express()
 // view engine setup
 app.set('view engine', 'ejs')
 
+// add middleware below the above line of code
+app.use(function(req, res, next) {
+  console.log('Hello SEI!')
+  next()
+})
+
 // basic middleware
+//This logs the request
 app.use(logger('dev'))
+//This jsonifies the request??
 app.use(express.json())
+//This puts data from the request onto the body, which is why we need to run it every time
 app.use(express.urlencoded({ extended: false }))
+//This creates paths for each of the files in public
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
   )
 )
+
+// add additional methods through override
+app.use(methodOverride('_method'))
 
 // mount imported routes
 app.use('/', indexRouter)
